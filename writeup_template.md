@@ -31,7 +31,8 @@ The goals / steps of this project are the following:
 * This is done in file ukf.cpp inside UKF method ProcessMeasurement(), inline comments include detail description and assumption.
 
 ####3. Upon receiving a measurement after the first, the algorithm should predict object position to the current timestep and then update the prediction using the new measurement.
-####4. Your algorithm sets up the appropriate matrices given the type of measurement and calls the correct measurement function for a given sensor type.
+####4. Your algorithm sets up the appropriate matrices given the type of measurement and calls the correct measurement function for a given sensor type
+
 
 * This is done in file ukf.cpp inside UKF method ProcessMeasurement(), a predict() is followed by sensor specific measurement update.
 
@@ -47,6 +48,15 @@ RMSE for ukf is lower than ekf.
 
 #### Visualize NIS Data
 
+//]: # (Image References)
+
+[image1]: ./visualization/nis_plot_radar.png "NIS plot, data from Radar only"
+[image2]: ./visualization/nis_plot_laser.png "NIS plot, data from laser only"
+[image3]: ./visualization/yaw_radar_laser_vs_time.png "Yaw plot, from fused data"
+[image4]: ./visualization/yaw_rate_radar_laser.png "Yaw rate plot, from fused data"
+[image5]: ./visualization/yaw_vs_time_laser_only.png "Yaw plot, from laser only"
+[image6]: ./visualization/yaw_rate_laser_only.png "Yaw rate plot, from laser only"
+
 My test results have been save in file 
    obj_pose-laser-radar-ukf-output.txt  -->  for rader and laser 
    obj_pose-laser-only-ukf-output.txt   -->  for laser only
@@ -57,10 +67,15 @@ ukf-visualization.ipynb
 1. Figure for NIS Data from radar with time k is presented in
    fig: "NIS vs measured time"  where 95% line (7.8) is also drawn.
    It matches the expectation, there are few peaks (<5%) above 7.8
-
+   ![alt text][image1]
    Similarly NIS data for laser is also drawn and match the expectation.
+   ![alt text][image2]
 
 2. Ground truth and estimated yaw and yaw rate with time is also drawn for fused data and for
    laser only in file visualization/ukf-visualization.htm . Fused one is converged earlier than
    laser one.
+   ![alt text][image3]
+   ![alt text][image5]
+   ![alt text][image4]
+   ![alt text][image6]
 
