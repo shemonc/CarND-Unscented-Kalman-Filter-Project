@@ -94,6 +94,7 @@ int main()
     	  float y_gt;
     	  float vx_gt;
     	  float vy_gt;
+
     	  iss >> x_gt;
     	  iss >> y_gt;
     	  iss >> vx_gt;
@@ -105,8 +106,18 @@ int main()
     	  gt_values(3) = vy_gt;
     	  ground_truth.push_back(gt_values);
           
+          /*
+           * storing these 2 data point into ukf object for every
+           * measurement as is needed to plot the estimated yaw &
+           * yaw rate compare to ground truth value.
+           * See ukf-visualization.ipynb for details.
+           */
+          
+          iss >> ukf.yaw_gt;
+          iss >> ukf.yawd_gt;
+
           //Call ProcessMeasurment(meas_package) for Kalman filter
-    	  ukf.ProcessMeasurement(meas_package);    	  
+          ukf.ProcessMeasurement(meas_package);    	  
 
     	  //Push the current estimated x,y positon from the Kalman filter's state vector
 

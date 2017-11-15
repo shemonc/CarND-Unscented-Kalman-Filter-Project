@@ -4,13 +4,16 @@
 #include "measurement_package.h"
 #include "Eigen/Dense"
 #include <vector>
-#include <string>
-#include <fstream>
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
 class UKF {
+
+private:
+    
+    // previous timestamp compare to every measurement
+    long long previous_timestamp_;
 public:
 
   ///* initially set to false, set to true in first call of ProcessMeasurement
@@ -30,6 +33,9 @@ public:
 
   ///* predicted sigma points matrix
   MatrixXd Xsig_pred_;
+
+  // Augmented sigma points matrix
+  MatrixXd Xsig_aug;
 
   ///* time when the state is true, in us
   long long time_us_;
@@ -67,6 +73,27 @@ public:
   ///* Sigma point spreading parameter
   double lambda_;
 
+    VectorXd x_arg;     // Augmented state
+    MatrixXd P_arg;     // Augmented covariance matrix
+    int i;
+    MatrixXd Q;         // Augmented covariance matrix
+
+    MatrixXd R_radar;   // Measurement noise for Radar
+    MatrixXd R_laser;   // Measurement noise for laser
+
+    /*
+     * NIS
+     */
+    double NIS_radar_;
+    double NIS_laser_;
+
+    /*
+     * Ground truth data for yaw and yaw rate
+     * Storing it here for ploting purpose,
+     * nothing else
+     */
+    float yaw_gt;
+    float yawd_gt;
 
   /**
    * Constructor
