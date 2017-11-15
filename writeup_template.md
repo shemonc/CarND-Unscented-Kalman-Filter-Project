@@ -50,14 +50,17 @@ RMSE for ukf is lower than ekf.
 My test results have been save in file 
    obj_pose-laser-radar-ukf-output.txt  -->  for rader and laser 
    obj_pose-laser-only-ukf-output.txt   -->  for laser only
-   
-1. Figure for NIS Data from radar with time k is presented in file ukf-visualization.html,
+
+NIS, Yaw and Yaw rate plot is available in file visualization/ukf-visualization.htm and the python script to draw the data is in file
+ukf-visualization.ipynb
+
+1. Figure for NIS Data from radar with time k is presented in
    fig: "NIS vs measured time"  where 95% line (7.8) is also drawn.
    It matches the expectation, there are few peaks (<5%) above 7.8
 
    Similarly NIS data for laser is also drawn and match the expectation.
 
 2. Ground truth and estimated yaw and yaw rate with time is also drawn for fused data and for
-   laser only in file ukf-visualization.html. Fused one is converged earlier than
+   laser only in file visualization/ukf-visualization.htm . Fused one is converged earlier than
    laser one.
 
